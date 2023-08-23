@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.sp.mvcapp.model.movie.MovieManager;
 
 //영화에 대한 조언요청을 받는 컨트롤러
-public class MovieController extends HttpServlet{
+public class MovieController{
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		
@@ -23,6 +23,8 @@ public class MovieController extends HttpServlet{
 		//컨틀로러에서는 가능은 해도, 로직을 작성하지 말자 
 		//이유는? Model(로직)을 분리시켜놓아야 다른 프로젝트 등에서 재사용가능하다..
 		//그리고 여기서 만일 로직을 작성해버리면, MVC중 Controller+ Model 이 되버림..
+		
+		//3) 알맞는 로직 객체에 일 시킨다..
 		MovieManager manager=new MovieManager();
 		String msg=manager.getAdvice(movie);
 		
@@ -35,6 +37,7 @@ public class MovieController extends HttpServlet{
 		
 		//만일 요청을 끊지 않고, 결과페이지인 result.jsp로 포워딩 하는 방법만 
 		//있다면, 우리는 session까지 사용할 필요 조차 없다.. 
+		//4단계) 결과 페이지인 result.jsp로 가져갈 것이 있다면 결과 저장..
 		request.setAttribute("msg", msg);
 		
 		//서버의  view 중 어떤 view로 포워딩할지를 결정하는 객체 

@@ -2,26 +2,19 @@
 <web-app xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="https://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="https://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>MVCApp</display-name>
 	
-	<!-- 혈액형 요청을 처리하는 서블릿  -->
-	<servlet>
-		<servlet-name>bloodServlet</servlet-name>
-		<servlet-class>org.sp.mvcapp.controller.BloodController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<url-pattern>/blood</url-pattern>
-		<servlet-name>bloodServlet</servlet-name>
-	</servlet-mapping>
-	
-	<!-- 영화 요청을 처리하는 서블릿  -->
-	<servlet>
-		<servlet-name>movieServlet</servlet-name>
-		<servlet-class>org.sp.mvcapp.controller.MovieController</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<url-pattern>/movie</url-pattern>
-		<servlet-name>movieServlet</servlet-name>
-	</servlet-mapping>
-	
+	<!-- MVC 프레임웍에서는 모든 요청을 받는 컨트롤러가 하나 존재해야 한다. 
+	즉 모든 요청이 하나의 진입점으로 통일되어야 한다.
+	 -->	
+	 <servlet>
+	 	<servlet-name>dispatcher</servlet-name>
+	 	<servlet-class>org.sp.mvcapp.controller.DispatcherServlet</servlet-class>
+	 </servlet>
+	 <servlet-mapping>
+	 	<url-pattern>*.do</url-pattern>
+	 	<servlet-name>dispatcher</servlet-name>
+	 </servlet-mapping>
+	 
+	 
 </web-app>
 
 

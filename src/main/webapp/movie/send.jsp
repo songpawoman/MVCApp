@@ -10,7 +10,7 @@ function send(){
 	 //혈액형에 대한 판단결과를 요청하자!!
 	let form=document.querySelector("form");
 	 
-	form.action="/movie";
+	form.action="/movie.do";
 	form.method="post";
 	form.submit();
 }
